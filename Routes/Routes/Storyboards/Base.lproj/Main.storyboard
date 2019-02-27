@@ -84,7 +84,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableViewCell" textLabel="KDs-6B-omt" detailTextLabel="98G-dd-8ID" style="IBUITableViewCellStyleSubtitle" id="J91-2c-mGb">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="historyCell" textLabel="KDs-6B-omt" detailTextLabel="98G-dd-8ID" style="IBUITableViewCellStyleSubtitle" id="J91-2c-mGb">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="J91-2c-mGb" id="KSt-26-ZrE">
@@ -148,10 +148,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gko-2q-ct9">
-                                <rect key="frame" x="0.0" y="64" width="320" height="434"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="390"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F8F-WC-60z" customClass="MDCButton">
-                                <rect key="frame" x="20" y="518" width="280" height="30"/>
+                                <rect key="frame" x="20" y="474" width="280" height="30"/>
                                 <state key="normal" title="SEE PHOTOS OF THE ROUTE"/>
                                 <connections>
                                     <segue destination="Ksd-UE-184" kind="show" id="0RV-DG-sUJ"/>
@@ -187,7 +187,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Iya-Oo-3NX">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="idV-DH-iso">
                                     <size key="itemSize" width="50" height="50"/>
@@ -196,13 +196,27 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="K2Q-tN-DYA">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photosCell" id="K2Q-tN-DYA" customClass="PhotosCollectionViewCell" customModule="Routes" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bU0-nH-Xw7">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                </imageView>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="bU0-nH-Xw7" secondAttribute="bottom" id="Cyc-I3-QDV"/>
+                                            <constraint firstItem="bU0-nH-Xw7" firstAttribute="leading" secondItem="K2Q-tN-DYA" secondAttribute="leading" id="OPn-BT-mm9"/>
+                                            <constraint firstAttribute="trailing" secondItem="bU0-nH-Xw7" secondAttribute="trailing" id="gZZ-WQ-1AF"/>
+                                            <constraint firstItem="bU0-nH-Xw7" firstAttribute="top" secondItem="K2Q-tN-DYA" secondAttribute="top" id="u9R-pf-Blc"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="photoImageView" destination="bU0-nH-Xw7" id="0C1-yy-uic"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -216,6 +230,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zU6-L3-enN"/>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="Iya-Oo-3NX" id="tyt-qH-bNI"/>
+                        <outlet property="collectionViewFlowLayout" destination="idV-DH-iso" id="s8z-yg-kpK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tiv-qn-ist" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -262,6 +280,6 @@
         <image name="history" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="t0C-nk-I10"/>
+        <segue reference="qGW-PU-NJd"/>
     </inferredMetricsTieBreakers>
 </document>
