@@ -10,6 +10,7 @@
 		4A11ECDC22261908006CDA1D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A11ECDB22261908006CDA1D /* MapViewController.swift */; };
 		4A11ECDE22261913006CDA1D /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A11ECDD22261913006CDA1D /* HistoryViewController.swift */; };
 		4A11ECE122262EDC006CDA1D /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A11ECE022262EDC006CDA1D /* PhotosViewController.swift */; };
+		4A9194D422273CAA0015D791 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9194D322273CAA0015D791 /* UIViewControllerExtensions.swift */; };
 		4AB091A82210A8F800BA5911 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB091A72210A8F800BA5911 /* AppDelegate.swift */; };
 		4AB091AA2210A8F800BA5911 /* RoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB091A92210A8F800BA5911 /* RoutesViewController.swift */; };
 		4AB091AD2210A8F800BA5911 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AB091AB2210A8F800BA5911 /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 		4A11ECDB22261908006CDA1D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4A11ECDD22261913006CDA1D /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		4A11ECE022262EDC006CDA1D /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		4A9194D322273CAA0015D791 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		4AB091A42210A8F800BA5911 /* Routes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Routes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AB091A72210A8F800BA5911 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4AB091A92210A8F800BA5911 /* RoutesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +68,14 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		4A9194D222273C8E0015D791 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4A9194D322273CAA0015D791 /* UIViewControllerExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		4AB0919B2210A8F800BA5911 = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +99,7 @@
 			children = (
 				4AB091A72210A8F800BA5911 /* AppDelegate.swift */,
 				4AB091AE2210A8FA00BA5911 /* Assets.xcassets */,
+				4A9194D222273C8E0015D791 /* Extensions */,
 				4AB091B32210A8FA00BA5911 /* Info.plist */,
 				4A11ECDF2226191C006CDA1D /* Storyboards */,
 				4A11ECDA222618E6006CDA1D /* ViewControllers */,
@@ -249,6 +260,7 @@
 				4A11ECDC22261908006CDA1D /* MapViewController.swift in Sources */,
 				4AB091A82210A8F800BA5911 /* AppDelegate.swift in Sources */,
 				4A11ECDE22261913006CDA1D /* HistoryViewController.swift in Sources */,
+				4A9194D422273CAA0015D791 /* UIViewControllerExtensions.swift in Sources */,
 				4A11ECE122262EDC006CDA1D /* PhotosViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
