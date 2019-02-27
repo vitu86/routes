@@ -54,7 +54,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Routes" id="g5l-YN-8bl">
-                        <barButtonItem key="rightBarButtonItem" title="History" image="history" style="plain" id="JAl-br-8lA">
+                        <barButtonItem key="rightBarButtonItem" title="History" image="history" style="done" id="JAl-br-8lA">
                             <color key="tintColor" red="0.18431372549019609" green="0.14509803921568626" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="Jqa-ZC-3QX" kind="presentation" id="6w4-Dv-fqN"/>
@@ -122,7 +122,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="History" id="dm2-5d-Rpg">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="stop" id="8Sw-C9-cmE">
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="stop" id="8Sw-C9-cmE">
                             <color key="tintColor" red="0.1843137255" green="0.1450980392" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="closeButtonItemTapped:" destination="DqL-vp-VW8" id="AF1-Ua-duf"/>
@@ -146,13 +146,80 @@
                     <view key="view" contentMode="scaleToFill" id="26N-Wd-XQt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gko-2q-ct9">
+                                <rect key="frame" x="0.0" y="64" width="320" height="434"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F8F-WC-60z" customClass="MDCButton">
+                                <rect key="frame" x="20" y="518" width="280" height="30"/>
+                                <state key="normal" title="SEE PHOTOS OF THE ROUTE"/>
+                                <connections>
+                                    <segue destination="Ksd-UE-184" kind="show" id="0RV-DG-sUJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8nt-CZ-2Pb" firstAttribute="trailing" secondItem="gko-2q-ct9" secondAttribute="trailing" id="OyM-Fv-Hfz"/>
+                            <constraint firstItem="8nt-CZ-2Pb" firstAttribute="trailing" secondItem="F8F-WC-60z" secondAttribute="trailing" constant="20" id="apT-1H-FFK"/>
+                            <constraint firstItem="gko-2q-ct9" firstAttribute="leading" secondItem="8nt-CZ-2Pb" secondAttribute="leading" id="fx2-cz-mu5"/>
+                            <constraint firstItem="8nt-CZ-2Pb" firstAttribute="bottom" secondItem="F8F-WC-60z" secondAttribute="bottom" constant="20" id="gKI-ta-pee"/>
+                            <constraint firstItem="F8F-WC-60z" firstAttribute="leading" secondItem="8nt-CZ-2Pb" secondAttribute="leading" constant="20" id="jis-cI-oXl"/>
+                            <constraint firstItem="gko-2q-ct9" firstAttribute="top" secondItem="8nt-CZ-2Pb" secondAttribute="top" id="p6z-rS-Jgh"/>
+                            <constraint firstItem="F8F-WC-60z" firstAttribute="top" secondItem="gko-2q-ct9" secondAttribute="bottom" constant="20" id="yPG-ke-aOV"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="8nt-CZ-2Pb"/>
                     </view>
+                    <connections>
+                        <outlet property="photosButton" destination="F8F-WC-60z" id="Q1H-ki-PRq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LAk-uC-Tr0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1367" y="-221"/>
+        </scene>
+        <!--Photos View Controller-->
+        <scene sceneID="j3S-en-nhH">
+            <objects>
+                <viewController id="Ksd-UE-184" customClass="PhotosViewController" customModule="Routes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PIL-hK-dnd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Iya-Oo-3NX">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="idV-DH-iso">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="K2Q-tN-DYA">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Iya-Oo-3NX" firstAttribute="leading" secondItem="zU6-L3-enN" secondAttribute="leading" id="2p3-qO-vFS"/>
+                            <constraint firstItem="zU6-L3-enN" firstAttribute="bottom" secondItem="Iya-Oo-3NX" secondAttribute="bottom" id="F06-BL-rUP"/>
+                            <constraint firstItem="Iya-Oo-3NX" firstAttribute="top" secondItem="zU6-L3-enN" secondAttribute="top" id="Q2d-gF-RZJ"/>
+                            <constraint firstItem="zU6-L3-enN" firstAttribute="trailing" secondItem="Iya-Oo-3NX" secondAttribute="trailing" id="rie-YM-sZu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zU6-L3-enN"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tiv-qn-ist" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2364" y="-222"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wzx-S1-TM9">
