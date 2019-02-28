@@ -20,19 +20,27 @@ class RoutesViewController: UIViewController {
     private var fromTFController:MDCTextInputControllerOutlined!
     private var toTFController:MDCTextInputControllerOutlined!
     private var searchBTScheme:MDCButtonScheme!
+    private var mapResult:MapResult!
     
     // MARK: - Private Constants
     private let activeColor:UIColor = UIColor(named: "BasePurple")!
-
+    
     // MARK: - UIViewController Override Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueToMap" {
+            let vc = segue.destination as! MapViewController
+            vc.mapResult = self.mapResult
+        }
+    }
+    
     // MARK: - IBActions
     @IBAction func searchButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: "segueToMap", sender: nil)
+        getLocationsFromAddress()
     }
     
     // MARK: - Private Functions
@@ -51,6 +59,26 @@ class RoutesViewController: UIViewController {
         searchBTScheme = MDCButtonScheme()
         MDCContainedButtonThemer.applyScheme(searchBTScheme, to: searchButton)
         searchButton.setBackgroundColor(activeColor)
+    }
+    
+    private func getLocationsFromAddress() {
+        // Check if places are nil or empty
+        guard fromTextField.text != nil && !fromTextField.text!.isEmpty
+            &&
+            toTextField.text != nil && !toTextField.text!.isEmpty else {
+                showAlert(title: "Attention", message: "Places should not be empty!")
+                return
+        }
+        showCenterIndicator()
+        MapHelper.sharedInstance.getMapResultFromAddresses(from: fromTextField.text!, to: toTextField.text!) { (result) in
+            self.hideCenterIndicator()
+            if let error = result.errorMessage {
+                self.showAlert(title: "Attention", message: error)
+            } else {
+                self.mapResult = result
+                self.performSegue(withIdentifier: "segueToMap", sender: nil)
+            }
+        }
     }
 }
 

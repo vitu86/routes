@@ -171,6 +171,7 @@
                         <viewLayoutGuide key="safeArea" id="8nt-CZ-2Pb"/>
                     </view>
                     <connections>
+                        <outlet property="mapView" destination="gko-2q-ct9" id="WN0-bO-VR4"/>
                         <outlet property="photosButton" destination="F8F-WC-60z" id="Q1H-ki-PRq"/>
                     </connections>
                 </viewController>
