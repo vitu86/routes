@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class PhotosViewController: UIViewController {
     
@@ -14,10 +15,17 @@ class PhotosViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
     
+    // MARK: - Public Properties
+    var route:MKRoute!
+    
+    // MARK: - Private Properties
+    private var photoList:[String] = []
+    
     // MARK: - View Controller Override Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        loadData()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -50,18 +58,36 @@ class PhotosViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
     }
+    
+    private func loadData() {
+        showCenterIndicator()
+        FlickrHelper.shared.getImagesFromRoute(route: route) { (result) in
+            self.photoList = result
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+                self.hideCenterIndicator()
+            }
+        }
+    }
 }
 
 // MARK: - Collection View Override Functions
 extension PhotosViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return photoList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photosCell", for: indexPath) as! PhotosCollectionViewCell
+        let item = photoList[indexPath.row]
+        
         cell.photoImageView.image = #imageLiteral(resourceName: "ImageIcon")
         cell.tintColor = UIColor(named: "BasePurple")
+        
+        ImageDownloadManager.shared.downloadImage(from: item) { (image) in
+            cell.photoImageView.image = image
+        }
+        
         return cell
     }
 }

@@ -148,13 +148,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gko-2q-ct9">
-                                <rect key="frame" x="0.0" y="64" width="320" height="390"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F8F-WC-60z" customClass="MDCButton">
-                                <rect key="frame" x="20" y="474" width="280" height="30"/>
+                                <rect key="frame" x="20" y="456" width="280" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="tee-rg-29l"/>
+                                </constraints>
                                 <state key="normal" title="SEE PHOTOS OF THE ROUTE"/>
                                 <connections>
-                                    <segue destination="Ksd-UE-184" kind="show" id="0RV-DG-sUJ"/>
+                                    <segue destination="Ksd-UE-184" kind="show" identifier="segueToPhotos" id="0RV-DG-sUJ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -204,7 +207,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bU0-nH-Xw7">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bU0-nH-Xw7">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 </imageView>
                                             </subviews>

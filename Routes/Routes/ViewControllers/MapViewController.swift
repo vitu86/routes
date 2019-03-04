@@ -14,9 +14,9 @@ class MapViewController: UIViewController {
     
     // MARK: - IBOutlets
     @IBOutlet weak var photosButton: MDCButton!
+    // MARK: - Private properties
     @IBOutlet weak var mapView: MKMapView!
     
-    // MARK: - Private properties
     private var photosBTScheme:MDCButtonScheme!
     
     // MARK: - Public properties
@@ -27,6 +27,13 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         drawRoute()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueToPhotos" {
+            let vc = segue.destination as! PhotosViewController
+            vc.route = mapResult?.route
+        }
     }
     
     // MARK: - Private Functions

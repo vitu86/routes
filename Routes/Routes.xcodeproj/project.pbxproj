@@ -16,6 +16,8 @@
 		4AAFEC4D222DCD3700B416FC /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAFEC4C222DCD3700B416FC /* DataHelper.swift */; };
 		4AAFEC50222DD8CB00B416FC /* Routes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4AAFEC4E222DD8CB00B416FC /* Routes.xcdatamodeld */; };
 		4AAFEC52222DDA2700B416FC /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAFEC51222DDA2700B416FC /* CoreDataHelper.swift */; };
+		4AAFEC56222DE4F400B416FC /* FlickrHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAFEC55222DE4F400B416FC /* FlickrHelper.swift */; };
+		4AAFEC58222DE92700B416FC /* ImageDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAFEC57222DE92700B416FC /* ImageDownloadManager.swift */; };
 		4AB091A82210A8F800BA5911 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB091A72210A8F800BA5911 /* AppDelegate.swift */; };
 		4AB091AA2210A8F800BA5911 /* RoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB091A92210A8F800BA5911 /* RoutesViewController.swift */; };
 		4AB091AD2210A8F800BA5911 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AB091AB2210A8F800BA5911 /* Main.storyboard */; };
@@ -36,6 +38,8 @@
 		4AAFEC4C222DCD3700B416FC /* DataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
 		4AAFEC4F222DD8CB00B416FC /* Routes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Routes.xcdatamodel; sourceTree = "<group>"; };
 		4AAFEC51222DDA2700B416FC /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		4AAFEC55222DE4F400B416FC /* FlickrHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrHelper.swift; sourceTree = "<group>"; };
+		4AAFEC57222DE92700B416FC /* ImageDownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadManager.swift; sourceTree = "<group>"; };
 		4AB091A42210A8F800BA5911 /* Routes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Routes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AB091A72210A8F800BA5911 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4AB091A92210A8F800BA5911 /* RoutesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +96,8 @@
 				4A9194D622274A510015D791 /* MapHelper.swift */,
 				4AAFEC4C222DCD3700B416FC /* DataHelper.swift */,
 				4AAFEC51222DDA2700B416FC /* CoreDataHelper.swift */,
+				4AAFEC55222DE4F400B416FC /* FlickrHelper.swift */,
+				4AAFEC57222DE92700B416FC /* ImageDownloadManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -287,11 +293,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AAFEC56222DE4F400B416FC /* FlickrHelper.swift in Sources */,
 				4AAFEC4D222DCD3700B416FC /* DataHelper.swift in Sources */,
 				4AB091AA2210A8F800BA5911 /* RoutesViewController.swift in Sources */,
 				4A11ECDC22261908006CDA1D /* MapViewController.swift in Sources */,
 				4AB091A82210A8F800BA5911 /* AppDelegate.swift in Sources */,
 				4A11ECDE22261913006CDA1D /* HistoryViewController.swift in Sources */,
+				4AAFEC58222DE92700B416FC /* ImageDownloadManager.swift in Sources */,
 				4A9194D422273CAA0015D791 /* UIViewControllerExtensions.swift in Sources */,
 				4A11ECE122262EDC006CDA1D /* PhotosViewController.swift in Sources */,
 				4AAFEC50222DD8CB00B416FC /* Routes.xcdatamodeld in Sources */,
