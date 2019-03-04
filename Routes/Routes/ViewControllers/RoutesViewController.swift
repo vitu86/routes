@@ -70,8 +70,10 @@ class RoutesViewController: UIViewController {
                 return
         }
         showCenterIndicator()
+        setUIMode(false)
         MapHelper.sharedInstance.getMapResultFromAddresses(from: fromTextField.text!, to: toTextField.text!) { (result) in
             self.hideCenterIndicator()
+            self.setUIMode(true)
             if let error = result.errorMessage {
                 self.showAlert(title: "Attention", message: error)
             } else {
@@ -79,6 +81,12 @@ class RoutesViewController: UIViewController {
                 self.performSegue(withIdentifier: "segueToMap", sender: nil)
             }
         }
+    }
+    
+    private func setUIMode(_ enabled:Bool) {
+        fromTextField.isEnabled = enabled
+        toTextField.isEnabled = enabled
+        searchButton.isEnabled = enabled
     }
 }
 
