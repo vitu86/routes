@@ -20,7 +20,6 @@ class RoutesViewController: UIViewController {
     private var fromTFController:MDCTextInputControllerOutlined!
     private var toTFController:MDCTextInputControllerOutlined!
     private var searchBTScheme:MDCButtonScheme!
-    private var mapResult:MapResult!
     
     // MARK: - Private Constants
     private let activeColor:UIColor = UIColor(named: "BasePurple")!
@@ -34,7 +33,7 @@ class RoutesViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueToMap" {
             let vc = segue.destination as! MapViewController
-            vc.mapResult = self.mapResult
+            vc.mapResult = (sender as! MapResult)
         }
     }
     
@@ -77,8 +76,13 @@ class RoutesViewController: UIViewController {
             if let error = result.errorMessage {
                 self.showAlert(title: "Attention", message: error)
             } else {
-                self.mapResult = result
-                self.performSegue(withIdentifier: "segueToMap", sender: nil)
+                // Save the successful search
+                let newSearchToSave:Search = Search(context: CoreDataHelper.shared.viewContext)
+                newSearchToSave.from = self.fromTextField.text
+                newSearchToSave.to = self.toTextField.text
+                try? CoreDataHelper.shared.viewContext.save()
+                
+                self.performSegue(withIdentifier: "segueToMap", sender: result)
             }
         }
     }

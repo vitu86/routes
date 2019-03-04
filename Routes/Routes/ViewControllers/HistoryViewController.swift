@@ -7,20 +7,28 @@
 //
 
 import UIKit
+import CoreData
 
 class HistoryViewController: UIViewController {
     
     // MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
     
-    // MARK: - Private Contants
-    private let dataSource:DataSource = DataSource() // Temporary before core data
+    // MARK: - Private Properties
+    private var fetchedResultsController:NSFetchedResultsController<Search>!
     
     // MARK: - UIViewController Override Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        dataSource.load() // Temporary before core data
+        loadData()
         configureUI()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueToMap" {
+            let vc = segue.destination as! MapViewController
+            vc.mapResult = (sender as! MapResult)
+        }
     }
     
     // MARK: - IBActions
@@ -29,6 +37,15 @@ class HistoryViewController: UIViewController {
     }
     
     // MARK: - Private Functions
+    private func loadData() {
+        fetchedResultsController = DataHelper.shared.getSearchData()
+        fetchedResultsController.delegate = self
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            fatalError("The fetch could not be performed: \(error.localizedDescription)")
+        }
+    }
     private func configureUI() {
         // Configure Table View
         tableView.delegate = self
@@ -39,21 +56,31 @@ class HistoryViewController: UIViewController {
 // MARK: - Table View Override Functions
 extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.data.count
+        return fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath)
-        let item = dataSource.data[indexPath.row]
+        let item = fetchedResultsController.object(at: indexPath)
         
-        cell.textLabel?.text = item.from
-        cell.detailTextLabel?.text = item.to
+        cell.textLabel?.text = "From: " + item.from!
+        cell.detailTextLabel?.text = "To: " + item.to!
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "segueToMap", sender: nil)
+        let item = fetchedResultsController.object(at: indexPath)
+        
+        showCenterIndicator()
+        MapHelper.sharedInstance.getMapResultFromAddresses(from: item.from!, to: item.to!) { (result) in
+            self.hideCenterIndicator()
+            if let error = result.errorMessage {
+                self.showAlert(title: "Attention", message: error)
+            } else {
+                self.performSegue(withIdentifier: "segueToMap", sender: result)
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -62,23 +89,24 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            dataSource.data.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            DataHelper.shared.deleteSearch(fetchedResultsController.object(at: indexPath))
         }
     }
 }
 
-// MARK: - Temporary Class To Fill Table
-class DataSource {
-    var data:[DataModel] = []
-    func load() {
-        for i in 0 ..< 20 {
-            data.append(DataModel(to: "Destination: \(i)", from: "From: \(i)"))
+extension HistoryViewController: NSFetchedResultsControllerDelegate {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            tableView.insertRows(at: [newIndexPath!], with: UITableView.RowAnimation.fade)
+            break
+        case .delete:
+            tableView.deleteRows(at: [indexPath!], with: .fade)
+            break
+        case .update:
+            tableView.reloadRows(at: [indexPath!], with: .fade)
+        case .move:
+            print("Moving item?")
         }
     }
-}
-
-struct DataModel {
-    var to:String
-    var from:String
 }

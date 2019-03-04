@@ -8,6 +8,7 @@
 
 import Foundation
 import MapKit
+import CoreData
 
 class DataHelper {
     // MARK: - STATIC OBJECT REFERENCE
@@ -20,7 +21,7 @@ class DataHelper {
     private init() {
     }
     
-    // MARK: - UserDefaults functions
+    // MARK: - UserDefaults Functions
     func setNewMapType(_ type:MKMapType) {
         UserDefaults.standard.set(NSNumber(value: type.rawValue), forKey: mapTypeValueKey)
     }
@@ -32,5 +33,14 @@ class DataHelper {
         } else {
             return nil
         }
+    }
+    
+    // MARK: - Search Core Data Functions
+    func getSearchData() -> NSFetchedResultsController<Search> {
+        return CoreDataHelper.shared.getFetchedResultsControllerOfSearchs()
+    }
+    
+    func deleteSearch(_ search:Search) {
+        CoreDataHelper.shared.deleteSearch(search)
     }
 }
