@@ -29,6 +29,16 @@ class MapViewController: UIViewController {
         drawRoute()
     }
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "segueToPhotos" {
+            if !Reachability.isConnectedToNetwork() {
+                showAlert(title: "Offline", message: "You need to be online to look the photos!")
+                return false
+            }
+        }
+        return true
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueToPhotos" {
             let vc = segue.destination as! PhotosViewController

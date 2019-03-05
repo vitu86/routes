@@ -10,6 +10,7 @@
 		4A11ECDC22261908006CDA1D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A11ECDB22261908006CDA1D /* MapViewController.swift */; };
 		4A11ECDE22261913006CDA1D /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A11ECDD22261913006CDA1D /* HistoryViewController.swift */; };
 		4A11ECE122262EDC006CDA1D /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A11ECE022262EDC006CDA1D /* PhotosViewController.swift */; };
+		4A5DA2E6222E0C3A00C0E158 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5DA2E5222E0C3A00C0E158 /* Reachability.swift */; };
 		4A9194D422273CAA0015D791 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9194D322273CAA0015D791 /* UIViewControllerExtensions.swift */; };
 		4A9194D722274A510015D791 /* MapHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9194D622274A510015D791 /* MapHelper.swift */; };
 		4A9194DA22274EA40015D791 /* MapResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9194D922274EA40015D791 /* MapResult.swift */; };
@@ -32,6 +33,7 @@
 		4A11ECDB22261908006CDA1D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4A11ECDD22261913006CDA1D /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		4A11ECE022262EDC006CDA1D /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		4A5DA2E5222E0C3A00C0E158 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		4A9194D322273CAA0015D791 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		4A9194D622274A510015D791 /* MapHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHelper.swift; sourceTree = "<group>"; };
 		4A9194D922274EA40015D791 /* MapResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapResult.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				4AAFEC51222DDA2700B416FC /* CoreDataHelper.swift */,
 				4AAFEC55222DE4F400B416FC /* FlickrHelper.swift */,
 				4AAFEC57222DE92700B416FC /* ImageDownloadManager.swift */,
+				4A5DA2E5222E0C3A00C0E158 /* Reachability.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A5DA2E6222E0C3A00C0E158 /* Reachability.swift in Sources */,
 				4AAFEC56222DE4F400B416FC /* FlickrHelper.swift in Sources */,
 				4AAFEC4D222DCD3700B416FC /* DataHelper.swift in Sources */,
 				4AB091AA2210A8F800BA5911 /* RoutesViewController.swift in Sources */,

@@ -39,7 +39,11 @@ class RoutesViewController: UIViewController {
     
     // MARK: - IBActions
     @IBAction func searchButtonTapped(_ sender: Any) {
-        getLocationsFromAddress()
+        if Reachability.isConnectedToNetwork() {
+            getLocationsFromAddress()
+        } else {
+            showAlert(title: "Offline", message: "You need to be online to search for routes!")
+        }
     }
     
     // MARK: - Private Functions

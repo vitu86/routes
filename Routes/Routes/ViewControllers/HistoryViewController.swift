@@ -72,6 +72,11 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = fetchedResultsController.object(at: indexPath)
         
+        if !Reachability.isConnectedToNetwork() {
+            showAlert(title: "Offline", message: "You need to be online to search for routes!")
+            return
+        }
+        
         showCenterIndicator()
         MapHelper.sharedInstance.getMapResultFromAddresses(from: item.from!, to: item.to!) { (result) in
             self.hideCenterIndicator()
