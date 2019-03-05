@@ -8,7 +8,7 @@ User define two locations to search for routes. The app will look for a route an
 
 ## How to run:
 1. You can [clone](https://help.github.com/en/articles/cloning-a-repository) or [download](https://stackoverflow.com/questions/6466945/fastest-way-to-download-a-github-project) the repository
-2. [Install CocoaPods on your machine](https://guides.cocoapods.org/using/getting-started.html) (Just if your don't have yet)
+2. [Install CocoaPods on your machine](https://guides.cocoapods.org/using/getting-started.html) (Just if your don't have it yet)
 3. Run `pod install` in the project folder
 4. You're free to run
 
